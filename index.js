@@ -1,27 +1,12 @@
-require('dotenv').config();
-const { Client, GatewayIntentBits } = require('discord.js');
-const axios = require('axios');
+require("dotenv").config();
+const { Client, GatewayIntentBits } = require("discord.js");
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds]
 });
 
-client.once('ready', () => {
+client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-async function fetchAmazonDeals() {
-  try {
-    const response = await axios.get('https://webservices.amazon.com/paapi5/searchitems', {
-      params: {
-        PartnerTag: process.env.AMAZON_TAG,
-        PartnerType: 'Associates',
-        Keywords: 'computer parts',
-        SearchIndex: 'Electronics'
-      },
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    return respon
+client.login(process.env.DISCORD_TOKEN);
